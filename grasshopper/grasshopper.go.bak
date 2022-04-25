@@ -14,3 +14,32 @@ For example 2 is not a factor of 7 because: 7 % 2 = 1
 
 Note: base is a non-negative number, factor is a positive number.
 */
+
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	var s string
+
+	fmt.Println("Enter a integer number: ")
+	fmt.Scan(&s)
+
+	for {
+		getint, err := strconv.Atoi(s)
+		if err != nil || getint < 0 {
+			fmt.Println("Not a (positive) integer number. Please insert a valid input:")
+			fmt.Scan(&s)
+		} else {
+			if getint > 0 {
+				fmt.Println("Well done! Job finished")
+				break
+			}
+
+		}
+	}
+	fmt.Println("Uscito dal for, prog terminato")
+}
