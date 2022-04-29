@@ -21,6 +21,9 @@ func GetGrade(a, b, c int) rune {
 	return grade
 
 	average := (a + b + c) / 3
+	fmt.Println("Average is: ", average)
+	grade = 'A'
+	return grade
 
 }
 
