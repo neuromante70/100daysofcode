@@ -1,0 +1,29 @@
+// 65-90 capital letters
+// 97-122 lowercase letters
+package main
+
+import "fmt"
+
+type MyString string
+
+func (s MyString) IsUpperCase() bool {
+	for _, letter := range s {
+		if int(letter) < 65 || int(letter) > 90 {
+			return false
+			break
+		}
+	}
+	return true
+}
+
+func main() {
+	var MyString = "ABCd"
+
+	if IsUpperCase(MyString) {
+		fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
+		fmt.Println("ALL CAPITAL letter")
+	} else {
+		fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
+		fmt.Println("not all capital letter")
+	}
+}

@@ -1,25 +1,51 @@
-// 65-90 capital letters
-// 97-122 lowercase letters
+/*
+Is the string uppercase?
+Task
+Create a method IsUpperCase to see whether the string is ALL CAPS. For example:
+
+type MyString string
+MyString("c").IsUpperCase() == false
+MyString("C").IsUpperCase() == true
+MyString("hello I AM DONALD").IsUpperCase() == false
+MyString("HELLO I AM DONALD").IsUpperCase() == true
+MyString("ACSKLDFJSgSKLDFJSKLDFJ").IsUpperCase() == false
+MyString("ACSKLDFJSGSKLDFJSKLDFJ").IsUpperCase() == true
+
+In this Kata, a string is said to be in ALL CAPS whenever it does not contain any lowercase letter
+so any string containing no letters at all is trivially considered to be in ALL CAPS.
+*/
+
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unicode"
+)
 
-var MyString string
+/* type MyString string
+
+func (s MyString) IsUpperCase() bool {
+  // Your code here!
+
+return true
+} */
 
 func main() {
-	MyString = "AbCD"
-	myRune := []rune(MyString)
-	isLowercase := false
-	for _, num := range myRune {
-		if int(num) < 65 || int(num) > 90 {
-			// fmt.Println("not capital letter", int(num))
-			isLowercase = true
-			break
+	// uppercase chars: 065 - 090
+	// lowercase chars: 097 - 122
+
+	var myString = "ABCd"
+	myRune := []rune(myString)
+	fmt.Println(myRune)
+	lenR := len(myRune) - 1
+	itsUppercase := false
+	fmt.Println(lenR)
+
+	for j := 0; j <= lenR; j++ {
+		//if myRune[j] <= "097" && myRune[j] >= "122" {
+		if unicode.IsUpper(myRune[j]) {
+			itsUppercase = true
 		}
 	}
-	if isLowercase {
-		fmt.Println("not all capital letter")
-	} else {
-		fmt.Println("ALL CAPITAL letter")
-	}
+	fmt.Println("The string is uppercase: ", itsUppercase)
 }

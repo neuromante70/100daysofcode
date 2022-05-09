@@ -19,29 +19,29 @@ import "fmt"
 func GetGrade(a, b, c int) rune {
 	// var grade rune
 
-	// average := (a + b + c) / 3
+	average := (a + b + c) / 3
 	// 90 <= score <= 100 'A'
-	switch average := (a + b + c) / 3; {
-	case average >= 90:
+	if average >= 90 {
 		return 'A'
-	// 80 <= score < 90	'B'
-	case average >= 80:
+		// 80 <= score < 90	'B'
+	} else if average >= 80 && average <= 90 {
 		return 'B'
-	// 70 <= score < 80	'C'
-	case average >= 70:
+		// 70 <= score < 80	'C'
+	} else if average >= 70 && average <= 80 {
 		return 'C'
-	// 60 <= score < 70	'D'
-	case average >= 60:
+		// 60 <= score < 70	'D'
+	} else if average >= 60 && average <= 70 {
 		return 'D'
-	// 0 <= score < 60	'F'
-	default:
+		// 0 <= score < 60	'F'
+	} else if average >= 0 && average < 60 {
 		return 'F'
 	}
+	return -1
 }
 
 func main() {
 	// average := (a + b + c) / 3
-	result := GetGrade(40, 40, 40)
+	result := GetGrade(50, 50, 50)
 	fmt.Println("")
 	fmt.Println("Your grade is ", string(result))
 }
