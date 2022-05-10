@@ -15,13 +15,44 @@ Hint: Don't forget to check for bad values like null/undefined
 */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
-func CountSheeps(numbers []bool) int {
-	return 0 // your code here
+// func CountSheeps(numbers []bool) int {
+// 	return 0 // your code here
+//   }
+
+func countSheeps(numbers []bool) int {
+	total := 0
+	for noSheep, count := range numbers {
+		if reflect.ValueOf(count).Kind().String() == "bool" {
+			if count {
+				total++
+			}
+		} else if count {
+			return noSheep
+		}
+	}
+	return total
 }
 
 func main() {
 	// fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
-	fmt.Println("\nhello, world")
+	sheeps := []bool{
+		true, true, true, false,
+		true, true, true, true,
+		true, false, true, false,
+		true, false, false, true,
+		true, true, true, true,
+		false, false, true, true,
+	}
+	result := countSheeps(sheeps)
+	if result == 0 {
+		fmt.Println("You intered not a bool value")
+	} else {
+		fmt.Println("Total sheep are: ", result)
+	}
+	// fmt.Println(sheeps)
 }
