@@ -3,14 +3,12 @@ package main
 import "fmt"
 
 func GetSize(w, h, d int) [2]int {
-	// your code here
 	// Surface = 2wh + 2wd + 2hd
 	// Area = w * h * d
-	result := [2]int{0, 1}
-	return result
+	return [2]int{(2 * w * h) + (2 * w * d) + (2 * h * d), w * h * d}
 }
 
 func main() {
-
-	fmt.Printf("\nhello, world\n")
+	var areaAndSurface [2]int = GetSize(2, 2, 2)
+	fmt.Println(areaAndSurface[0], areaAndSurface[1])
 }

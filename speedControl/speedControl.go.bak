@@ -1,0 +1,62 @@
+/*
+Speed Control
+In John's car the GPS records every s seconds the distance travelled from an origin (distances are measured in an arbitrary but consistent unit). For example, below is part of a record with s = 15
+
+The sections are:
+0.0-0.19, 0.19-0.5, 0.5-0.75, 0.75-1.0, 1.0-1.25, 1.25-1.50, 1.5-1.75, 1.75-2.0, 2.0-2.25
+and  the Delta is:
+x = [0.0, 0.19, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25]
+
+
+To calculate hourly speed you can use:
+(3600 * delta_distance) / s
+
+We can calculate John's average hourly speed on every section and we get:
+[0.0,  0.19, 0.5,  0.75, 1.0,  1.25, 1.5,  1.75, 2.0, 2.25]
+[45.6, 74.4, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0w]
+
+Given s and x the task is to return as an integer the *floor* of the maximum average speed per hour obtained on the sections of x. If x length is less than or equal to 1 return 0 since the car didn't move.
+
+Example:
+with the above data your function gps(s, x)should return 74
+
+Note
+With floats it can happen that results depends on the operations order.
+*/
+
+package main
+
+import "fmt"
+
+func Gps(s int, x []float64) int {
+	delta := x[1] - x[0]
+	return int(float64(3600.0) * delta / float64(s))
+}
+
+func main() {
+	// fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
+	// var gpsCoordinates = []float64{0, 0.19, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25}
+	var gpsCoordinates = []float64{0.0, 0.23, 0.46, 0.69, 0.92, 1.15, 1.38, 1.61}
+	delta := make([]float64, len(gpsCoordinates)-1)
+	hourly_speed := make([]float64, len(gpsCoordinates)-1)
+	s := 20
+	var result int
+
+	fmt.Println("coordinates: ", gpsCoordinates)
+	for x := 0; x < len(gpsCoordinates)-1; x++ {
+		delta[x] = gpsCoordinates[x+1] - gpsCoordinates[x]
+	}
+	fmt.Println("delta: ", delta)
+
+	for x := 0; x < len(gpsCoordinates)-1; x++ {
+		hourly_speed[x] = float64(3600.00) * delta[x] / float64(s)
+	}
+	fmt.Println("hourly speed: ", hourly_speed)
+
+	if len(gpsCoordinates) <= 1 {
+		return 0
+	} else {
+		result = Gps(15, gpsCoordinates)
+	}
+	fmt.Println("\nYour function result is:\n", result)
+}
