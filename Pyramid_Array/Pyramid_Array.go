@@ -23,6 +23,7 @@ func function(int) int {
 
 func main() {
 	// fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
+
 	result := function(1)
 	fmt.Println("\nYour function result is:\n", result)
 }
