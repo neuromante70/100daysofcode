@@ -33,14 +33,15 @@ func main() {
 	// uppercase chars: 065 - 090
 	// lowercase chars: 097 - 122
 
-	var myString = "ABCD"
+	var myString = "ABCE"
 	myRune := []rune(myString)
 	//lenR := len(myRune) - 1
 	itsUppercase := true
-	for j := 0; j <= len(myRune) - 1; j++ {
-		if myRune[j] < 65 || myRune[j] > 90 {
+	for j := 0; j <= len(myRune)-1; j++ {
+		if myRune[j] < rune(65) || myRune[j] > rune(90) {
 			// if unicode.IsUpper(myRune[j]) {
 			itsUppercase = false
+			break
 		}
 	}
 	fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
