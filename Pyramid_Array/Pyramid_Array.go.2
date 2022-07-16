@@ -1,0 +1,60 @@
+/*
+Write a function that when given a number >= 0, returns an Array of ascending length subarrays.
+
+pyramid(0) => [ ]
+pyramid(1) => [ [1] ]
+pyramid(2) => [ [1], [1, 1] ]
+pyramid(3) => [ [1], [1, 1], [1, 1, 1] ]
+Note: the subarrays should be filled with 1s
+It("Testing for 0", func() [][]int{}
+It("Testing for 1", func() [][]int{[]int{1}}
+It("Testing for 2", func() [][]int{[]int{1}, []int{1, 1}}
+It("Testing for 3", func()[][]int{[]int{1}, []int{1, 1}, []int{1, 1, 1}}
+*/
+
+package main
+
+import "fmt"
+
+/*(
+	"fmt"
+	//"strconv"
+)*/
+
+// func function(int) int {
+// 	return 0
+// }
+
+func main() {
+	// fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
+
+	// rowsLen := len(sample)
+	// columnsLen := len(sample[0])
+
+	orders := make([][]int, 0) // create my 2d slice with zeros
+	for i := 0; i <= 6; i++ {
+		value := 1
+		// logic to create first 3 columns
+		temp := make([]int, 0)
+		temp = append(temp, value)
+
+		temp2 := make([]int, 3)
+
+		// logic to create next 3 columns on basis of previous 3 columns
+		for j, value := range temp {
+			addcounter := j + 1
+			//addcounter, _ := strconv.ParseInt("1", 0, 0)
+			temp2[j] = value + int(addcounter)
+		}
+
+		temp = append(temp, temp2...)
+		orders = append(orders, [][]int{temp}...)
+	}
+
+	fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
+
+	for _, row := range orders {
+		fmt.Print(row, " \n")
+	}
+
+}

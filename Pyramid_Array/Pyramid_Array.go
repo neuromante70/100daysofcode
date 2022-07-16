@@ -16,60 +16,44 @@ package main
 
 import "fmt"
 
-// func function(int) int {
-// 	return 0
-// }
-
 func main() {
 	// fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
 
-	sample := [6][5]int{}
-
-	rowsLen := len(sample)
+	// rowsLen := len(sample)
 	// columnsLen := len(sample[0])
 
-	// sample[1][0] = 1
+	for i := 0; i <= 6; i++ {
+		value := 1
 
-	// sample[2][0] = 1
-	// sample[2][1] = 1
+		// firstLine	:= []int{value}
+		// secondLine	:= []int{1, 1}
+		// thirdLine	:= []int{1,1,1}
+		// fourthLine	:= []int{1,1,1,1}
+		// fifthLine	:= []int{1,1,1,1,1}
+		// sixthLine	:= []int{1,1,1,1,1,1}
+		// seventhLine	:= []int{1,1,1,1,1,1,1}
+		// eighthLine	:= []int{1,1,1,1,1,1,1,1}
+		// ninthLine	:= []int{1,1,1,1,1,1,1,1,1}
+		// tenthLine	:= []int{1,1,1,1,1,1,1,1,1,1}
 
-	// sample[3][0] = 1
-	// sample[3][1] = 1
-	// sample[3][2] = 1
+		// temp := make([][]int, 0)
+		// temp = append(temp, firstLine)
+		// temp = append(temp, secondLine)
 
-	//fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
-
-	for row := 1; row < rowsLen; row++ {
-		for column := 0; column < row; column++ {
-			sample[row][column] = 1
+		orders := make([][]int, 0) // create my 2d slice with zeros
+		for i := 0; i <= 6; i++ {
+			// value := rand.Float64()
+			temp := make([]int, 0)
+			temp = append(temp, value)
+			orders = append(orders, [][]int{temp}...)
 		}
+
+		fmt.Print("\033[2J") //clear the screen befor printing the output in the terminal
+		fmt.Println(orders)
+
+		// for _, row := range orders {
+		// 	fmt.Print(row, " \n")
+		// }
 	}
-
-	// print array as a grid with for loop
-
-	// for row := 0; row < 4; row++ {
-	// 	for column := 0; column < 3; column++ {
-	// 		fmt.Print(sample[row][column], " ")
-	// 	}
-	// 	fmt.Print("\n")
-	// }
-
-	//print array as a grid with for-range loop
-
-	// for _, row := range sample {
-	// 	for _, val := range row {
-	// 		fmt.Print(val, " ")
-	// 	}
-	// 	fmt.Print("\n")
-	// }
-
-	//print array as a grid with for-range loop, a simplified version
-
-	for _, row := range sample {
-		fmt.Print(row, " \n")
-	}
-
-	// fmt.Println(rows)
-	// fmt.Println(columns)
 
 }
